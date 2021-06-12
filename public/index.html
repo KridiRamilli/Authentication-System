@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="container__form signUp">
+        <form class="form" action="">
+          <h1 class="form__title">Create Account</h1>
+          <div class="form__socials">
+            <a href="#" class="form__social">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="form__social">
+              <i class="fab fa-google-plus-g"></i>
+            </a>
+            <a href="#" class="form__social">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <span>or use your email for registration</span>
+          <div class="form__wrap">
+            <input
+              class="form__input signUp__name"
+              type="text"
+              placeholder="Name"
+            />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>*This is an error</small>
+          </div>
+          <input
+            class="form__input signUp__email"
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            class="form__input signUp__password"
+            type="password"
+            placeholder="Password"
+          />
+          <input
+            class="form__input signUp__confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+          />
+          <input class="form__submit" type="submit" value="Sign Up" />
+        </form>
+      </div>
+      <div class="container__form signIn">
+        <form class="form" action="">
+          <h1>Sign In</h1>
+          <div class="form__socials">
+            <a href="#" class="form__social"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="form__social"
+              ><i class="fab fa-google-plus-g"></i
+            ></a>
+            <a href="#" class="form__social"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+          <span>or use your account</span>
+          <input
+            class="form__input signIn__email"
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            class="form__input signIn__password"
+            type="password"
+            placeholder="Password"
+          />
+          <a href="#">Forgot your password?</a>
+          <input class="form__submit" type="submit" value="Sign In" />
+        </form>
+      </div>
+      <div class="container__overlay">
+        <div class="overlay">
+          <div class="overlay__panel overlay__left">
+            <h1>Welcome Back</h1>
+            <p>To keep connected with please login with your personal info</p>
+            <input
+              class="form__submit overlay__submit"
+              type="submit"
+              value="Sign In"
+            />
+          </div>
+          <div class="overlay__panel overlay__right">
+            <h1>Hello friend</h1>
+            <p>Enter your personal details and start you journey with us!</p>
+            <input
+              class="form__submit overlay__submit"
+              type="submit"
+              value="Sign Up"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
