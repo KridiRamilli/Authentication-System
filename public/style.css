@@ -73,8 +73,12 @@ a {
   outline: none;
   border-bottom: 1px solid #13d0ad;
   padding: 12px 15px;
-  margin: 8px 0;
   width: 100%;
+}
+.container__form .form__forgot {
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 1px;
 }
 .container__form .form__submit {
   border-radius: 20px;
@@ -84,9 +88,11 @@ a {
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
+  margin-top: 15px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 .container__form .form__submit:active {
   transform: scale(0.95);
@@ -110,7 +116,7 @@ a {
   color: #fff;
 }
 
-.overlay__submit {
+.overlay__button {
   border-radius: 20px;
   background: transparent;
   border: 2px solid #fff;
@@ -124,11 +130,12 @@ a {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  cursor: pointer;
 }
-.overlay__submit:active {
+.overlay__button:active {
   transform: scale(0.95);
 }
-.overlay__submit:focus {
+.overlay__button:focus {
   outline: none;
 }
 
@@ -197,13 +204,33 @@ a {
   position: absolute;
   top: 20px;
   right: 10px;
+  visibility: hidden;
 }
 .form__wrap small {
   font-size: 12px;
   color: #e74c3c;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  display: block;
+  text-align: left;
+  margin-top: 5px;
+  padding-left: 10px;
+  visibility: hidden;
+}
+.form__wrap.error .form__input {
+  border-bottom: 1px solid #e74c3c;
+}
+.form__wrap.error small {
+  visibility: visible;
+}
+.form__wrap.error i.fa-exclamation-circle {
+  color: #e74c3c;
+  visibility: visible;
+}
+.form__wrap.success .form__input {
+  border-bottom: 1px solid #03f861;
+}
+.form__wrap.success i.fa-check-circle {
+  color: #03f861;
+  visibility: visible;
 }
 
 /* Move Sign In to the right */
