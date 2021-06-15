@@ -17,10 +17,14 @@
   };
 
   const isEmailValid = (email) => {
+    let msg = "";
     let emailRegex = new RegExp(
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
-    return emailRegex.test(email);
+    if (!emailRegex.test(email)) {
+      msg = "Invalid email format, please enter a valid email!";
+    }
+    return msg || true;
   };
 
   isPasswordValid = (pass) => {
@@ -43,12 +47,42 @@
     }
   };
 
+  isUsernameValid = (username) => {
+    let msg = "";
+    let numberRegex = new RegExp(/[0-9]/);
+    if (username.length < 5) {
+      msg = "Username must be at least 5 characters long";
+      return msg;
+    }
+    if (numberRegex.test(username)) {
+      msg = "Username can not contain numbers!";
+    }
+    return msg || true;
+  };
+
+  const checkInputs = (ev) => {
+    ev.preventDefault();
+    let checkUsername = isUsernameValid(username.value);
+    let checkPassword = isPasswordValid(password.value);
+    let checkConfirmPassword = isPasswordValid(confirmPassword.value);
+    let checkEmail = isEmailValid(email.value);
+
+    console.log([checkPassword, checkUsername, checkEmail]);
+  };
+
   //   setError(".signIn__password", "Your password is not correct");
 
-  //Get elements
+  //Get elements for animations
   const signIn = $(".overlay__right .form__submit");
   const signUp = $(".overlay__left .form__submit");
   const container = $(".container");
+
+  //Get elements for validation
+  const username = $(".signUp__name");
+  const password = $(".signUp__password");
+  const confirmPassword = $(".signUp__confirmPassword");
+  const email = $(".signUp__email");
+  const submit = $(".signUp__submit");
 
   //Activatiate animation
   signIn.addEventListener("click", (ev) => {
@@ -57,4 +91,8 @@
   signUp.addEventListener("click", (ev) => {
     container.classList.remove("right__panel-active");
   });
+
+  //Activate Validation
+
+  submit.addEventListener("click", checkInputs);
 })();
