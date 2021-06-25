@@ -1,16 +1,13 @@
 const { readFileSync, truncateSync } = require("fs");
 const path = require("path");
+const htmlData = readFileSync(
+  path.join(__dirname, "../public/index.html"),
+  "utf8"
+);
+document.body.innerHTML = htmlData;
+const elements = require("../public/main");
 
-let elements = null;
-
-beforeAll(() => {
-  const htmlData = readFileSync(
-    path.join(__dirname, "../public/index.html"),
-    "utf8"
-  );
-  document.body.innerHTML = htmlData;
-  elements = require("../public/main");
-});
+beforeAll(() => {});
 
 describe("Testing Input error validation", () => {
   test("Email Validation", () => {
@@ -21,7 +18,7 @@ describe("Testing Input error validation", () => {
   });
   test.only("Password Validation", () => {
     const { password, submit } = elements;
-    password.value = "Kridi553382";
+    password.value = "Password5555";
     // expect(
     //   getComputedStyle(password.parentNode.querySelector("small")).visibility
     // ).toBe("hidden");
