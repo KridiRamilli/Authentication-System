@@ -1,3 +1,6 @@
+//@ts-check
+
+
 (function () {
   //Utils
   const $ = (elem) => {
@@ -10,7 +13,7 @@
     element.classList.remove("success");
     const msgElem = element.querySelector("small");
     element.classList.add("error");
-    msgElem.innerText = msg;
+    msgElem.innerHTML = msg;
   };
 
   const setSuccess = (elem) => {
@@ -40,7 +43,7 @@
         errMsg = "Your password must be at least 6 characters long";
         return errMsg;
       case !capitalLetterRegex.test(pass):
-        errMsg = "Your password must contain at least a CAPITAL letter";
+        errMsg = "Your password must contain at least a CAPITAL letter!";
         return errMsg;
       case !numberRegex.test(pass):
         errMsg = "Your password must contain at least a Number";
@@ -83,14 +86,14 @@
     );
     let checkEmail = isEmailValid(email.value);
 
-    addValidationClass(checkUsername, username);
-    addValidationClass(checkPassword, password);
+    addValidationClass(username, checkUsername);
+    addValidationClass(password, checkPassword);
+    addValidationClass(email,checkEmail);
     //prettier-ignore
-    checkPassword === true && addValidationClass(checkConfirmPassword, confirmPassword);
-    addValidationClass(checkEmail, email);
+    checkPassword === true && addValidationClass(confirmPassword,checkConfirmPassword);
   };
 
-  const addValidationClass = (check, input) => {
+  const addValidationClass = (input,check ) => {
     if (check !== true) {
       setError(input, check);
     } else {
@@ -100,6 +103,7 @@
 
   //   setError(".signIn__password", "Your password is not correct");
 
+  
   //Get elements for animations
   const signIn = $(".overlay__right .form__submit");
   const signUp = $(".overlay__left .form__submit");
@@ -112,17 +116,18 @@
   const email = $(".signUp__email");
   const submit = $(".signUp__submit");
 
-  //Activatiate animation
-  signIn.addEventListener("click", (ev) => {
-    container.classList.add("right__panel-active");
-  });
-  signUp.addEventListener("click", (ev) => {
-    container.classList.remove("right__panel-active");
-  });
 
-  //Activate Validation
 
-  submit.addEventListener("click", checkInputs);
+    //Activatiate animation
+    signIn.addEventListener("click", (ev) => {
+      container.classList.add("right__panel-active");
+    });
+    signUp.addEventListener("click", (ev) => {
+      container.classList.remove("right__panel-active");
+    });
+
+    //Activate Validation
+    submit.addEventListener("click", checkInputs);
 
   //For testing access
   module.exports = {
@@ -131,5 +136,10 @@
     confirmPassword,
     username,
     submit,
+    checkInputs,
+    isEmailValid,
+    isPasswordValid,
+    isUsernameValid,
+    isConfirmPasswordValid
   };
 })();

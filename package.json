@@ -2,10 +2,12 @@
   "name": "LoginSystem",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "jest",
-    "sass": "sass --watch style.scss ./public/style.css"
+    "test": "jest --watch",
+    "sass": "sass --watch style.scss ./public/style.css",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
