@@ -1,24 +1,25 @@
-const express = require('express')
-const path = require('path')
-const app = express()
+require("dotenv").config();
+const express = require("express");
+const path = require("path");
+const app = express();
 
-require('dotenv').config()
+require("./db/connect");
+const userRoutes = require("./routers/user");
+const port = process.env.PORT || 3000;
+const publicDir = path.join(__dirname, "../public");
+app.use(express.static(publicDir));
+app.use(express.json());
 
-const port = process.env.PORT || 3000
-const publicDir = path.join(__dirname,'../public')
-app.use(express.static(publicDir))
-app.use(express.json())
+app.use(userRoutes);
+app.get("/", (req, res) => {
+  res.send("Hi");
+});
 
-app.get('/', (req,res) =>{
-    res.send('Hi')
-})
-
-app.post('/signUp', (req,res ) => {
-  console.log(req.body)
-  res.send(req.body.username)
-})
-
+// app.post('/signUp', (req,res ) => {
+//   console.log(req.body)
+//   res.send(req.body.username)
+// })
 
 app.listen(port, () => {
-  console.log(`Server is listening to port: ${port}`)    
-})
+  console.log(`Server is listening to port: ${port}`);
+});

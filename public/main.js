@@ -1,6 +1,5 @@
 //@ts-check
 
-
 (function () {
   //Utils
   const $ = (elem) => {
@@ -88,12 +87,12 @@
 
     addValidationClass(username, checkUsername);
     addValidationClass(password, checkPassword);
-    addValidationClass(email,checkEmail);
+    addValidationClass(email, checkEmail);
     //prettier-ignore
     checkPassword === true && addValidationClass(confirmPassword,checkConfirmPassword);
   };
 
-  const addValidationClass = (input,check ) => {
+  const addValidationClass = (input, check) => {
     if (check !== true) {
       setError(input, check);
     } else {
@@ -103,7 +102,6 @@
 
   //   setError(".signIn__password", "Your password is not correct");
 
-  
   //Get elements for animations
   const signIn = $(".overlay__right .form__submit");
   const signUp = $(".overlay__left .form__submit");
@@ -116,18 +114,16 @@
   const email = $(".signUp__email");
   const submit = $(".signUp__submit");
 
+  //Activatiate animation
+  signIn.addEventListener("click", (ev) => {
+    container.classList.add("right__panel-active");
+  });
+  signUp.addEventListener("click", (ev) => {
+    container.classList.remove("right__panel-active");
+  });
 
-
-    //Activatiate animation
-    signIn.addEventListener("click", (ev) => {
-      container.classList.add("right__panel-active");
-    });
-    signUp.addEventListener("click", (ev) => {
-      container.classList.remove("right__panel-active");
-    });
-
-    //Activate Validation
-    submit.addEventListener("click", checkInputs);
+  //Activate Validation
+  submit.addEventListener("click", checkInputs);
 
   //For testing access
   module.exports = {
@@ -140,6 +136,6 @@
     isEmailValid,
     isPasswordValid,
     isUsernameValid,
-    isConfirmPasswordValid
+    isConfirmPasswordValid,
   };
 })();
